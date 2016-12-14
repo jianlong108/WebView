@@ -1,5 +1,5 @@
 //
-//  ViewController_one.h
+//  ViewController_two.h
 //  wkwebviewDemo
 //
 //  Created by Wangjianlong on 2016/11/23.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController_one : UIViewController
+@interface GameParseViewController : UIViewController
 
 @end

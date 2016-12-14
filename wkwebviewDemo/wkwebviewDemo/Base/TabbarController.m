@@ -7,31 +7,34 @@
 //
 
 #import "TabbarController.h"
-#import "ViewController_two.h"
+#import "GameParseViewController.h"
 #import "ViewController_three.h"
 
+#import "wkNavigationController.h"
+#import "HomeViewController.h"
 @interface TabbarController ()
 
 @end
 
 @implementation TabbarController
-//- (instancetype)init{
-////    [super init];
-//    
-//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
-    ViewController_two *two = [[ViewController_two alloc]init];
+    GameParseViewController *two = [[GameParseViewController alloc]init];
     two.view.backgroundColor = [UIColor blueColor];
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:two];
+    wkNavigationController *nav = [[wkNavigationController alloc]initWithRootViewController:two];
     [self addChildViewController:nav];
     
+    HomeViewController *home = [[HomeViewController alloc]init];
+    home.view.backgroundColor = [UIColor blueColor];
+    wkNavigationController *homeNav = [[wkNavigationController alloc]initWithRootViewController:home];
+    [self addChildViewController:homeNav];
+    
     ViewController_three *three = [[ViewController_three alloc]init];
-    three.view.backgroundColor = [UIColor redColor];
-    [self addChildViewController:three];
+    wkNavigationController *nav1 = [[wkNavigationController alloc]initWithRootViewController:three];
+    [self addChildViewController:nav1];
 }
 
 - (void)didReceiveMemoryWarning {

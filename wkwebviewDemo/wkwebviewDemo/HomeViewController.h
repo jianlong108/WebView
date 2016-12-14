@@ -1,5 +1,5 @@
 //
-//  ViewController_two.h
+//  ViewController_one.h
 //  wkwebviewDemo
 //
 //  Created by Wangjianlong on 2016/11/23.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController_two : UIViewController
+@interface HomeViewController : UIViewController
 
 @end
