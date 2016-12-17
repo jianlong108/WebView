@@ -37,8 +37,17 @@
     
    
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithTitle:@"观看" style:UIBarButtonItemStylePlain target:self action:@selector(beginParse)];
     
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn addTarget:self action:@selector(beginAnalysis) forControlEvents:UIControlEventTouchUpInside];
+    btn.frame =CGRectMake(0, 0, 88, 44);
+    btn.hidden = YES;
+    [btn setTitle:@"开始分析" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithTitle:@"观看" style:UIBarButtonItemStylePlain target:self action:@selector(lookWeb)];
     self.navigationItem.rightBarButtonItem = rightItem;
     
     self.MVP_GameView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
@@ -58,18 +67,37 @@
      {
          
          TFHpple * doc       = [[TFHpple alloc] initWithHTMLData:data];
-         NSArray * elements_ni  = [doc searchWithXPathQuery:@"//tr[@class='ni']"];
-         [self.allGames addObjectsFromArray:elements_ni];
+         NSArray * elements_ni  = [doc searchWithXPathQuery:@"//tr[@class]"];
+         for (TFHppleElement *element in elements_ni) {
+             NSLog(@"%@ %ld",[element objectForKey:@"class"],element.children.count);
+             if ([[element objectForKey:@"class"]isEqualToString:@"ni"]||[[element objectForKey:@"class"]isEqualToString:@"ni2"]) {
+                 if (element.children.count >20) {
+                     [self.allGames addObject:element];
+                 }
+                 
+             }
+             
+         }
          
-         NSArray * elements_ni2  = [doc searchWithXPathQuery:@"//tr[@class='ni2']"];
-         [self.allGames addObjectsFromArray:elements_ni2];
+         
          
          [self beginParse];
+         
+         dispatch_sync(dispatch_get_main_queue(), ^{
+             [self.MVP_GameView reloadData];
+             self.navigationItem.leftBarButtonItem.customView.hidden = NO;
+         });
          
          
      }];
     [downloadtask resume];
     
+}
+- (void)lookWeb{
+    WebViewController *web = [[WebViewController alloc]init];
+    web.url = [NSURL URLWithString:@"http://www.310win.com/buy/jingcai.aspx?typeID=105&oddstype=2"];
+    
+    [self.navigationController pushViewController:web animated:YES];
 }
 - (void)beginParse{
     for (TFHppleElement *element in self.allGames)
@@ -80,38 +108,65 @@
             NSArray *array = [element childrenWithTagName:@"td"];
             for (TFHppleElement *subEle in array)
             {
-                if ([subEle hasChildren])
-                {
+                NSArray *array = [subEle children];
+                TFHppleElement *lastEle = subEle.children.lastObject;
+                if (subEle.children.count == 5 && [subEle.firstChild.tagName isEqualToString:@"a"] && [lastEle.tagName isEqualToString:@"a"])
+                {//亚欧析情
                     
-                    NSArray *array = [subEle children];
-                    if (array.count == 5)
+                    for (TFHppleElement *subsubEle in array)
                     {
-                        
-                        for (TFHppleElement *subsubEle in array)
+                        if (subsubEle.text != nil)
                         {
-                            if (![subsubEle.text isEqualToString:@""] && subsubEle.text != nil && [subsubEle objectForKey:@"href"])
+                            GameSubObject *object = [[GameSubObject alloc]init];
+                            object.title = subsubEle.text;
+                            object.href = [NSString stringWithFormat:@"%@%@",@"http://www.310win.com",[subsubEle objectForKey:@"href"]];
+                            NSLog(@"111%@",object.title);
+                            switch (i) {
+                                case 3:
+                                    game.plate = object;
+                                    break;
+                                case 4:
+                                    game.oddset = object;
+                                    break;
+                                case 5:
+                                    game.analysis = object;
+                                    break;
+                                case 6:
+                                    game.intelligence = object;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            i++;
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    for (TFHppleElement *subsubEle in array)
+                    {
+                        if ([subsubEle.tagName isEqualToString:@"a"])
+                        {
+                            if (subsubEle.text != nil)
                             {
                                 GameSubObject *object = [[GameSubObject alloc]init];
                                 object.title = subsubEle.text;
-                                object.href = [[[subEle childrenWithTagName:@"a"] firstObject] objectForKey:@"href"];
+                                if ([[subsubEle objectForKey:@"href"] containsString:@"http"]) {
+                                    object.href = [subsubEle objectForKey:@"href"];
+                                }else{
+                                    object.href = [NSString stringWithFormat:@"%@%@",@"http://www.310win.com",[subsubEle objectForKey:@"href"]];
+                                }
+//                                NSLog(@"222%@",object.title);
                                 switch (i) {
                                     case 0:
-                                        game.hometeam = object;
+                                        game.gameName = object;
                                         break;
                                     case 1:
-                                        game.visitingteam = object;
+                                        game.hometeam = object;
                                         break;
                                     case 2:
-                                        game.plate = object;
-                                        break;
-                                    case 3:
-                                        game.oddset = object;
-                                        break;
-                                    case 4:
-                                        game.analysis = object;
-                                        break;
-                                    case 5:
-                                        game.intelligence = object;
+                                        game.visitingteam = object;
                                         break;
                                     default:
                                         break;
@@ -119,35 +174,24 @@
                                 i++;
                             }
                         }
-                        
-                    }else{
-                        for (TFHppleElement *subsubEle in array) {
-                            if (![subsubEle.text isEqualToString:@""] && subsubEle.text != nil) {
-                                if ([[[subEle childrenWithTagName:@"a"] firstObject] objectForKey:@"href"]) {
-                                    GameSubObject *object = [[GameSubObject alloc]init];
-                                    object.title = subsubEle.text;
-                                    object.href = [[[subEle childrenWithTagName:@"a"] firstObject] objectForKey:@"href"];
-                                    game.gameName = object;
-//                                    NSLog(@"+++%@ %@",subsubEle.text,[[[subEle childrenWithTagName:@"a"] firstObject] objectForKey:@"href"]);
-                                }
-                            }
-                        }
                     }
                 }
+                
             }
             [self.gameModeles addObject:game];
             
         }
     
-    [self.MVP_GameView reloadData];
     
-    [self beginAnalysis];
+    
+    
 }
 - (void)beginAnalysis{
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        
+    
         for (GameObject *object in self.gameModeles) {
-            NSString *urlStr = [NSMutableString stringWithFormat:@"http://www.310win.com%@",object.plate.href];
+            NSString *urlStr = object.plate.href;
+//            NSLog(@"%@",urlStr);
             NSURL *url = [NSURL URLWithString:urlStr];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
             NSURLSessionDataTask* downloadtask =
@@ -155,34 +199,40 @@
              {
                  
                  TFHpple * doc       = [[TFHpple alloc] initWithHTMLData:data];
-                 NSArray * elements_ni  = [doc searchWithXPathQuery:@"//tr[@class='ni']"];
+                 
+                 NSArray *array = [doc searchWithXPathQuery:@"//span[@id='odds']"];
+                 TFHppleElement *span = array.firstObject;
+                 TFHppleElement *table = span.firstChild;
+                 NSArray * elements_ni  = [table searchWithXPathQuery:@"//tr[@class='ni']"];
                  for (TFHppleElement *ele in elements_ni) {
                      Betcompany *company = [[Betcompany alloc]init];
                      int i = 0;
                      for (TFHppleElement *subele in ele.children) {
                          if (subele.text.length > 1) {
-//                             NSLog(@"+++%@",subele.text);
+                             NSMutableString *tempStr = [NSMutableString stringWithString:subele.text];
+                             [tempStr replaceOccurrencesOfString:@" " withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempStr.length)];
+
                              switch (i) {
                                  case 0:
-                                     company.name = subele.text;
+                                     company.name = tempStr;
                                      break;
                                  case 1:
-                                     company.oriTop = subele.text;
+                                     company.oriTop = tempStr;
                                      break;
                                  case 2:
-                                     company.oriHandi = subele.text;
+                                     company.oriHandi = tempStr;
                                      break;
                                  case 3:
-                                     company.oridown = subele.text;
+                                     company.oridown = tempStr;
                                      break;
                                  case 4:
-                                     company.nowTop = subele.text;
+                                     company.nowTop = tempStr;
                                      break;
                                  case 5:
-                                     company.nowHandi = subele.text;
+                                     company.nowHandi = tempStr;
                                      break;
                                  case 6:
-                                     company.nowdown = subele.text;
+                                     company.nowdown = tempStr;
                                      break;
                                  default:
                                      break;
@@ -195,59 +245,60 @@
                      [object.betCompanies addObject:company];
                  }
                  
-                 NSArray * elements_ni2  = [doc searchWithXPathQuery:@"//tr[@class='ni2']"];
+                 NSArray * elements_ni2  = [table searchWithXPathQuery:@"//tr[@class='ni2']"];
                  for (TFHppleElement *ele in elements_ni2) {
                      Betcompany *company = [[Betcompany alloc]init];
                      int i = 0;
                      for (TFHppleElement *subele in ele.children) {
                          
                          if (subele.text.length > 1) {
-//                             NSLog(@"---%@",subele.text);
+                             NSMutableString *tempStr = [NSMutableString stringWithString:subele.text];
+                             [tempStr replaceOccurrencesOfString:@" " withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, tempStr.length)];
+                             
                              switch (i) {
                                  case 0:
-                                     company.name = subele.text;
+                                     company.name = tempStr;
                                      break;
                                  case 1:
-                                     company.oriTop = subele.text;
+                                     company.oriTop = tempStr;
                                      break;
                                  case 2:
-                                     company.oriHandi = subele.text;
+                                     company.oriHandi = tempStr;
                                      break;
                                  case 3:
-                                     company.oridown = subele.text;
+                                     company.oridown = tempStr;
                                      break;
                                  case 4:
-                                     company.nowTop = subele.text;
+                                     company.nowTop = tempStr;
                                      break;
                                  case 5:
-                                     company.nowHandi = subele.text;
+                                     company.nowHandi = tempStr;
                                      break;
                                  case 6:
-                                     company.nowdown = subele.text;
+                                     company.nowdown = tempStr;
                                      break;
                                  default:
                                      break;
                              }
                              i++;
+                             
                          }
+
                      }
                      [object.betCompanies addObject:company];
                  }
-//                 int i = 0;
+                 
                  for (Betcompany *company in object.betCompanies) {
-//                     if (company.nowTop.floatValue > 1.0 || company.nowdown.floatValue > 1.0) {
-//                         object.canBet = YES;
-//                     }
+//                     NSLog(@"%@ %@",company.nowHandi,company.oriHandi);
                      if ([company.name isEqualToString:@"澳彩"]) {
+                         
                          if(![company.nowHandi isEqualToString:company.oriHandi])
                              object.canBet = YES;
+                         else if(company.nowTop.floatValue > 1.0 || company.nowdown.floatValue > 1.0){
+                             object.canBet = YES;
+                         }
                      }
                  }
-//                 if (i>4) {
-//                     object.canBet = YES;
-//                 }else if (){
-//                     
-//                 }
                  if ([object isEqual:[self.gameModeles lastObject]]) {
                      dispatch_async(dispatch_get_main_queue(), ^{
                          [self.MVP_GameView reloadData];

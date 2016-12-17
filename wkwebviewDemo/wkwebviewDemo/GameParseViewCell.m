@@ -27,7 +27,7 @@
 }
 - (void)clickbtn:(UIButton *)sender{
     if ([self.delegate respondsToSelector:@selector(cell:ClickBtn:)]) {
-        [self.delegate cell:self ClickBtn:[NSString stringWithFormat:@"http://www.310win.com%@",_model.plate.href]];
+        [self.delegate cell:self ClickBtn:_model.plate.href];
     }
 }
 - (void)prepareForReuse{
@@ -37,7 +37,7 @@
     [self.gameNameBtn setTitle:_model.gameName.title forState:UIControlStateNormal];
     [self.homeBtn setTitle:_model.hometeam.title forState:UIControlStateNormal];
     [self.visitBtn setTitle:_model.visitingteam.title forState:UIControlStateNormal];
-    self.canBet.on = _model.canBet;
+    [self.canBet setOn:NO animated:NO];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -49,7 +49,6 @@
     [self.gameNameBtn setTitle:_model.gameName.title forState:UIControlStateNormal];
     [self.homeBtn setTitle:_model.hometeam.title forState:UIControlStateNormal];
     [self.visitBtn setTitle:_model.visitingteam.title forState:UIControlStateNormal];
-    NSLog(@"%d",_model.canBet);
-    self.canBet.on = _model.canBet;
+    [self.canBet setOn:_model.canBet animated:YES];;
 }
 @end
