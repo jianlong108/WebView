@@ -294,8 +294,10 @@
                          
                          if(![company.nowHandi isEqualToString:company.oriHandi])
                              object.canBet = YES;
-                         else if(company.nowTop.floatValue > 1.0 || company.nowdown.floatValue > 1.0){
+                         else if(company.nowTop.floatValue > 1.0 && [company.nowHandi isEqualToString:@"半球"]){
                              object.canBet = YES;
+                         }else{
+                             object.canBet = NO;
                          }
                      }
                  }
