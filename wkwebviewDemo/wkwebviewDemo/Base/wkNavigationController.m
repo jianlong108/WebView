@@ -26,6 +26,11 @@
 - (UIViewController *)childViewControllerForStatusBarStyle{
     return self.topViewController;
 }
-
-
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    NSLog(@"%@",viewController);
+    [super pushViewController:viewController animated:animated];
+}
+- (void)setNeedsStatusBarAppearanceUpdate{
+    [super setNeedsStatusBarAppearanceUpdate];
+}
 @end

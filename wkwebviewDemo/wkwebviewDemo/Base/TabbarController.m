@@ -22,6 +22,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    ViewController_three *three = [[ViewController_three alloc]init];
+    wkNavigationController *nav1 = [[wkNavigationController alloc]initWithRootViewController:three];
+    [self addChildViewController:nav1];
+    
     GameParseViewController *two = [[GameParseViewController alloc]init];
     two.view.backgroundColor = [UIColor blueColor];
     wkNavigationController *nav = [[wkNavigationController alloc]initWithRootViewController:two];
@@ -32,16 +38,16 @@
     wkNavigationController *homeNav = [[wkNavigationController alloc]initWithRootViewController:home];
     [self addChildViewController:homeNav];
     
-    ViewController_three *three = [[ViewController_three alloc]init];
-    wkNavigationController *nav1 = [[wkNavigationController alloc]initWithRootViewController:three];
-    [self addChildViewController:nav1];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)setNeedsStatusBarAppearanceUpdate{
+    [super setNeedsStatusBarAppearanceUpdate];
+}
 /*
 #pragma mark - Navigation
 

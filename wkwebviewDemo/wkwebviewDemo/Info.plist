@@ -27,6 +27,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>精选</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>精选</string>
 	<key>UILaunchStoryboardName</key>

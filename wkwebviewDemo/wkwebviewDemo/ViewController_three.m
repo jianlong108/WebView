@@ -7,9 +7,10 @@
 //
 
 #import "ViewController_three.h"
+#import "statusBarViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface ViewController_three ()<UIScrollViewDelegate,CLLocationManagerDelegate>
+@interface ViewController_three ()<UIScrollViewDelegate,CLLocationManagerDelegate,UIImagePickerControllerDelegate>
 /**location*/
 @property (nonatomic, strong)CLLocationManager *locationManager;
 /***/
@@ -32,21 +33,35 @@
     _scrollview.contentSize = CGSizeMake(320, 20000);
     self.view.backgroundColor = [UIColor orangeColor];
     
-    _locationManager = [[CLLocationManager alloc]init];
-    _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    //    if ([[AppContext systemVersion] floatValue] >= 8) {
-    [_locationManager requestWhenInUseAuthorization];//使用程序其间允许访问位置数据（iOS8定位需要）
-    //    }
-    [_locationManager startUpdatingLocation];
+//    _locationManager = [[CLLocationManager alloc]init];
+//    _locationManager.delegate = self;
+//    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    //    if ([[AppContext systemVersion] floatValue] >= 8) {
+//    [_locationManager requestWhenInUseAuthorization];//使用程序其间允许访问位置数据（iOS8定位需要）
+//    //    }
+//    [_locationManager startUpdatingLocation];
+    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
+    [btn addTarget:self action:@selector(next) forControlEvents:UIControlEventTouchUpInside];
+    btn.backgroundColor = [UIColor redColor];
+    [self.view addSubview:btn];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
+- (void)next{
+    statusBarViewController *ipc = [[statusBarViewController alloc]init];
+//    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+//    ipc.view.frame = [UIScreen mainScreen].bounds;
+//    ipc.sourceType =  UIImagePickerControllerSourceTypeCamera;
+//    ipc.delegate = self;
+    [self presentViewController:ipc animated:YES completion:nil];
+}
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+//    NSLog(@"%@",NSStringFromCGRect([UIApplication sharedApplication].statusBarFrame));
+}
 /**
  设置当前界面显示电池条的样式.
 
@@ -58,6 +73,7 @@
     }else {
         return UIStatusBarStyleLightContent;
     }
+    
 }
 /**
  如果当前界面不显示电池条,重写此方法.并返回YES.否则忽视此方法

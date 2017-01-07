@@ -13,13 +13,14 @@
 #import "GameParseViewCell.h"
 #import "WebViewController.h"
 #import "GameObject.h"
+#import "JLTableView.h"
 
 #import <JavaScriptCore/JavaScriptCore.h>
 
-@interface GameParseViewController ()<UITableViewDelegate,UITableViewDataSource,NSURLSessionDelegate,GameParseViewCellDelegate>
+@interface GameParseViewController ()<JLTableViewDelegate,UITableViewDataSource,NSURLSessionDelegate,GameParseViewCellDelegate>
 
 
-@property (nonatomic, strong) UITableView *MVP_GameView;
+@property (nonatomic, strong) JLTableView *MVP_GameView;
 
 /**所有比赛*/
 @property (nonatomic, strong)NSMutableArray<TFHppleElement *> *allGames;
@@ -28,6 +29,9 @@
 
 /**session*/
 @property (nonatomic, strong)NSURLSession *session;
+
+/**风火轮*/
+@property (nonatomic, weak) UIActivityIndicatorView *activityView;
 
 @end
 
@@ -39,7 +43,7 @@
     
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn addTarget:self action:@selector(beginAnalysis) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(beginAnalysis:) forControlEvents:UIControlEventTouchUpInside];
     btn.frame =CGRectMake(0, 0, 88, 44);
     btn.hidden = YES;
     [btn setTitle:@"开始分析" forState:UIControlStateNormal];
@@ -47,13 +51,20 @@
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.leftBarButtonItem = leftItem;
     
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityView = activityView;
+    activityView.hidden = YES;
+    self.navigationItem.titleView = activityView;
+    
+    
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithTitle:@"观看" style:UIBarButtonItemStylePlain target:self action:@selector(lookWeb)];
     self.navigationItem.rightBarButtonItem = rightItem;
     
-    self.MVP_GameView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.MVP_GameView = [[JLTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.MVP_GameView.delegate = self;
     self.MVP_GameView.dataSource = self;
     [self.MVP_GameView registerNib:[UINib nibWithNibName:@"GameParseViewCell" bundle:nil] forCellReuseIdentifier:@"mvp"];
+    self.MVP_GameView.rowHeight = 88;
     
     [self.view addSubview:self.MVP_GameView];
 
@@ -186,7 +197,10 @@
     
     
 }
-- (void)beginAnalysis{
+- (void)beginAnalysis:(UIButton *)sender{
+    sender.hidden = YES;
+    _activityView.hidden = NO;
+    [_activityView startAnimating];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
     
         for (GameObject *object in self.gameModeles) {
@@ -291,7 +305,12 @@
                  for (Betcompany *company in object.betCompanies) {
 //                     NSLog(@"%@ %@",company.nowHandi,company.oriHandi);
                      if ([company.name isEqualToString:@"澳彩"]) {
-                         
+                         object.ori_Top = company.oriTop;
+                         object.ori_Plate = company.oriHandi;
+                         object.ori_Bottom = company.oridown;
+                         object.now_Top = company.nowTop;
+                         object.now_Plate = company.nowHandi;
+                         object.now_Bottom = company.nowdown;
                          if(![company.nowHandi isEqualToString:company.oriHandi])
                              object.canBet = YES;
                          else if(company.nowTop.floatValue > 1.0 && [company.nowHandi isEqualToString:@"半球"]){
@@ -303,6 +322,9 @@
                  }
                  if ([object isEqual:[self.gameModeles lastObject]]) {
                      dispatch_async(dispatch_get_main_queue(), ^{
+                         sender.hidden = NO;
+                         _activityView.hidden = YES;
+                         [_activityView stopAnimating];
                          [self.MVP_GameView reloadData];
                      });
                  }
@@ -349,5 +371,10 @@
     
     [self.navigationController pushViewController:web animated:YES];
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 88;
+}
+- (void)JLTableView:(JLTableView *)tableView SwitchFromIndex:(NSUInteger)fromeIndex ToIndex:(NSUInteger)toIndex{
+    NSLog(@"FROM -- INDEX %ld  TO  INDEX  %ld",fromeIndex,toIndex);
+}
 @end

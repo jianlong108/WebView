@@ -55,6 +55,24 @@
 /**betcompany*/
 @property (nonatomic, strong)NSMutableArray *betCompanies;
 
+/**澳彩 初上*/
+@property (nonatomic, copy)NSString *ori_Top;
+
+/**澳彩 初盘*/
+@property (nonatomic, copy)NSString *ori_Plate;
+
+/**澳彩 初下*/
+@property (nonatomic, copy)NSString *ori_Bottom;
+
+/**澳彩 now上*/
+@property (nonatomic, copy)NSString *now_Top;
+
+/**澳彩 now盘*/
+@property (nonatomic, copy)NSString *now_Plate;
+
+/**澳彩 now下*/
+@property (nonatomic, copy)NSString *now_Bottom;
+
 /**可以*/
 @property (nonatomic, assign)BOOL canBet;
 

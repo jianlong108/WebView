@@ -28,6 +28,8 @@
 		346331EE1DE5B4B700B951F8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 346331ED1DE5B4B700B951F8 /* WebKit.framework */; };
 		346331F01DE6829600B951F8 /* Study.html in Resources */ = {isa = PBXBuildFile; fileRef = 346331EF1DE6829600B951F8 /* Study.html */; };
 		346331F31DE6867300B951F8 /* JSOCHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 346331F21DE6867300B951F8 /* JSOCHandler.m */; };
+		349A625D1E11219B0060D69E /* JLTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A625C1E11219B0060D69E /* JLTableView.m */; };
+		34F4DC501E0CD0E7000158BC /* statusBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F4DC4F1E0CD0E7000158BC /* statusBarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,10 @@
 		346331EF1DE6829600B951F8 /* Study.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Study.html; sourceTree = "<group>"; };
 		346331F11DE6867300B951F8 /* JSOCHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSOCHandler.h; sourceTree = "<group>"; };
 		346331F21DE6867300B951F8 /* JSOCHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSOCHandler.m; sourceTree = "<group>"; };
+		349A625B1E11219B0060D69E /* JLTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLTableView.h; sourceTree = "<group>"; };
+		349A625C1E11219B0060D69E /* JLTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLTableView.m; sourceTree = "<group>"; };
+		34F4DC4E1E0CD0E7000158BC /* statusBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statusBarViewController.h; sourceTree = "<group>"; };
+		34F4DC4F1E0CD0E7000158BC /* statusBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = statusBarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,8 @@
 				3401963C1DFD1C7C00CD5850 /* TabbarController.m */,
 				3401963D1DFD1C7C00CD5850 /* wkNavigationController.h */,
 				3401963E1DFD1C7C00CD5850 /* wkNavigationController.m */,
+				349A625B1E11219B0060D69E /* JLTableView.h */,
+				349A625C1E11219B0060D69E /* JLTableView.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -146,6 +154,8 @@
 				340196451DFD418000CD5850 /* GameObject.m */,
 				346331E91DE59B0F00B951F8 /* ViewController_three.h */,
 				346331EA1DE59B0F00B951F8 /* ViewController_three.m */,
+				34F4DC4E1E0CD0E7000158BC /* statusBarViewController.h */,
+				34F4DC4F1E0CD0E7000158BC /* statusBarViewController.m */,
 				346331D21DE59A1700B951F8 /* Main.storyboard */,
 				346331D51DE59A1700B951F8 /* Assets.xcassets */,
 				346331D71DE59A1700B951F8 /* LaunchScreen.storyboard */,
@@ -247,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				340196401DFD1C7C00CD5850 /* wkNavigationController.m in Sources */,
+				349A625D1E11219B0060D69E /* JLTableView.m in Sources */,
 				340196501DFDA0CA00CD5850 /* WebViewController.m in Sources */,
 				346331E81DE59B0300B951F8 /* GameParseViewController.m in Sources */,
 				346331F31DE6867300B951F8 /* JSOCHandler.m in Sources */,
@@ -257,6 +268,7 @@
 				340196391DFD1C3C00CD5850 /* XPathQuery.m in Sources */,
 				340196381DFD1C3C00CD5850 /* TFHppleElement.m in Sources */,
 				340196371DFD1C3C00CD5850 /* TFHpple.m in Sources */,
+				34F4DC501E0CD0E7000158BC /* statusBarViewController.m in Sources */,
 				346331CB1DE59A1700B951F8 /* main.m in Sources */,
 				346331E51DE59AF400B951F8 /* HomeViewController.m in Sources */,
 				346331EB1DE59B0F00B951F8 /* ViewController_three.m in Sources */,
@@ -382,7 +394,7 @@
 				INFOPLIST_FILE = wkwebviewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JL.webview;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JL.web;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -396,7 +408,7 @@
 				INFOPLIST_FILE = wkwebviewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JL.webview;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JL.web;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
