@@ -29,6 +29,13 @@
 		346331F01DE6829600B951F8 /* Study.html in Resources */ = {isa = PBXBuildFile; fileRef = 346331EF1DE6829600B951F8 /* Study.html */; };
 		346331F31DE6867300B951F8 /* JSOCHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 346331F21DE6867300B951F8 /* JSOCHandler.m */; };
 		349A625D1E11219B0060D69E /* JLTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A625C1E11219B0060D69E /* JLTableView.m */; };
+		34D204A01E25144C0044F2DC /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D204971E25144C0044F2DC /* FMDatabase.m */; };
+		34D204A11E25144C0044F2DC /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D204991E25144C0044F2DC /* FMDatabaseAdditions.m */; };
+		34D204A21E25144C0044F2DC /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D2049B1E25144C0044F2DC /* FMDatabasePool.m */; };
+		34D204A31E25144C0044F2DC /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D2049D1E25144C0044F2DC /* FMDatabaseQueue.m */; };
+		34D204A41E25144C0044F2DC /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D2049F1E25144C0044F2DC /* FMResultSet.m */; };
+		34D204A71E2519DA0044F2DC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D204A61E2519DA0044F2DC /* libsqlite3.tbd */; };
+		34D204A91E251C590044F2DC /* Soccer.db in Resources */ = {isa = PBXBuildFile; fileRef = 34D204A81E251C590044F2DC /* Soccer.db */; };
 		34F4DC501E0CD0E7000158BC /* statusBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F4DC4F1E0CD0E7000158BC /* statusBarViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +78,18 @@
 		346331F21DE6867300B951F8 /* JSOCHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSOCHandler.m; sourceTree = "<group>"; };
 		349A625B1E11219B0060D69E /* JLTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLTableView.h; sourceTree = "<group>"; };
 		349A625C1E11219B0060D69E /* JLTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLTableView.m; sourceTree = "<group>"; };
+		34D204961E25144C0044F2DC /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		34D204971E25144C0044F2DC /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		34D204981E25144C0044F2DC /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		34D204991E25144C0044F2DC /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		34D2049A1E25144C0044F2DC /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		34D2049B1E25144C0044F2DC /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		34D2049C1E25144C0044F2DC /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		34D2049D1E25144C0044F2DC /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		34D2049E1E25144C0044F2DC /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		34D2049F1E25144C0044F2DC /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		34D204A61E2519DA0044F2DC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		34D204A81E251C590044F2DC /* Soccer.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Soccer.db; sourceTree = "<group>"; };
 		34F4DC4E1E0CD0E7000158BC /* statusBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statusBarViewController.h; sourceTree = "<group>"; };
 		34F4DC4F1E0CD0E7000158BC /* statusBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = statusBarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34D204A71E2519DA0044F2DC /* libsqlite3.tbd in Frameworks */,
 				3401962F1DFD13B800CD5850 /* libxml2.2.tbd in Frameworks */,
 				346331EE1DE5B4B700B951F8 /* WebKit.framework in Frameworks */,
 			);
@@ -117,6 +137,7 @@
 		346331BD1DE59A1700B951F8 = {
 			isa = PBXGroup;
 			children = (
+				34D204951E25144C0044F2DC /* FMDB */,
 				346331C81DE59A1700B951F8 /* wkwebviewDemo */,
 				346331C71DE59A1700B951F8 /* Products */,
 				346331EC1DE5B4B700B951F8 /* Frameworks */,
@@ -158,6 +179,7 @@
 				34F4DC4F1E0CD0E7000158BC /* statusBarViewController.m */,
 				346331D21DE59A1700B951F8 /* Main.storyboard */,
 				346331D51DE59A1700B951F8 /* Assets.xcassets */,
+				34D204A81E251C590044F2DC /* Soccer.db */,
 				346331D71DE59A1700B951F8 /* LaunchScreen.storyboard */,
 				346331DA1DE59A1700B951F8 /* Info.plist */,
 				346331C91DE59A1700B951F8 /* Supporting Files */,
@@ -176,10 +198,28 @@
 		346331EC1DE5B4B700B951F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				34D204A61E2519DA0044F2DC /* libsqlite3.tbd */,
 				3401962E1DFD13B800CD5850 /* libxml2.2.tbd */,
 				346331ED1DE5B4B700B951F8 /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		34D204951E25144C0044F2DC /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				34D204961E25144C0044F2DC /* FMDatabase.h */,
+				34D204971E25144C0044F2DC /* FMDatabase.m */,
+				34D204981E25144C0044F2DC /* FMDatabaseAdditions.h */,
+				34D204991E25144C0044F2DC /* FMDatabaseAdditions.m */,
+				34D2049A1E25144C0044F2DC /* FMDatabasePool.h */,
+				34D2049B1E25144C0044F2DC /* FMDatabasePool.m */,
+				34D2049C1E25144C0044F2DC /* FMDatabaseQueue.h */,
+				34D2049D1E25144C0044F2DC /* FMDatabaseQueue.m */,
+				34D2049E1E25144C0044F2DC /* FMResultSet.h */,
+				34D2049F1E25144C0044F2DC /* FMResultSet.m */,
+			);
+			path = FMDB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +283,7 @@
 			files = (
 				346331D91DE59A1700B951F8 /* LaunchScreen.storyboard in Resources */,
 				346331D61DE59A1700B951F8 /* Assets.xcassets in Resources */,
+				34D204A91E251C590044F2DC /* Soccer.db in Resources */,
 				3401964D1DFD95A000CD5850 /* GameParseViewCell.xib in Resources */,
 				346331F01DE6829600B951F8 /* Study.html in Resources */,
 				346331D41DE59A1700B951F8 /* Main.storyboard in Resources */,
@@ -258,9 +299,14 @@
 			files = (
 				340196401DFD1C7C00CD5850 /* wkNavigationController.m in Sources */,
 				349A625D1E11219B0060D69E /* JLTableView.m in Sources */,
+				34D204A21E25144C0044F2DC /* FMDatabasePool.m in Sources */,
 				340196501DFDA0CA00CD5850 /* WebViewController.m in Sources */,
 				346331E81DE59B0300B951F8 /* GameParseViewController.m in Sources */,
+				34D204A31E25144C0044F2DC /* FMDatabaseQueue.m in Sources */,
+				34D204A01E25144C0044F2DC /* FMDatabase.m in Sources */,
+				34D204A11E25144C0044F2DC /* FMDatabaseAdditions.m in Sources */,
 				346331F31DE6867300B951F8 /* JSOCHandler.m in Sources */,
+				34D204A41E25144C0044F2DC /* FMResultSet.m in Sources */,
 				340196491DFD94D900CD5850 /* GameParseViewCell.m in Sources */,
 				346331CE1DE59A1700B951F8 /* AppDelegate.m in Sources */,
 				340196461DFD418000CD5850 /* GameObject.m in Sources */,
