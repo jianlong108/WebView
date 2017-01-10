@@ -39,8 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn addTarget:self action:@selector(beginAnalysis:) forControlEvents:UIControlEventTouchUpInside];
@@ -60,6 +59,22 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithTitle:@"观看" style:UIBarButtonItemStylePlain target:self action:@selector(lookWeb)];
     self.navigationItem.rightBarButtonItem = rightItem;
     
+   
+
+    UIImageView *bgImg = [[UIImageView alloc]initWithFrame:self.view.bounds];
+    bgImg.image = [UIImage imageNamed:@"analysis_bg1"];
+    [self.view addSubview:bgImg];
+    
+    UIButton *getDataBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [getDataBtn setBackgroundImage:[UIImage imageNamed:@"Field"] forState:UIControlStateNormal];
+    getDataBtn.frame = CGRectMake(0, 0, 300, 100);
+    getDataBtn.center = self.view.center;
+    [getDataBtn addTarget:self action:@selector(getTodayData) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:getDataBtn];
+    
+}
+- (void)getTodayData{
+    
     self.MVP_GameView = [[JLTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.MVP_GameView.delegate = self;
     self.MVP_GameView.dataSource = self;
@@ -67,7 +82,6 @@
     self.MVP_GameView.rowHeight = 88;
     
     [self.view addSubview:self.MVP_GameView];
-
     
     NSURL *url = [NSURL URLWithString:@"http://www.310win.com/buy/jingcai.aspx?typeID=105&oddstype=2"];
     //    NSURL *url = [[NSBundle mainBundle] URLForResource:@"Study" withExtension:@"html"];
@@ -102,7 +116,6 @@
          
      }];
     [downloadtask resume];
-    
 }
 - (void)lookWeb{
     WebViewController *web = [[WebViewController alloc]init];

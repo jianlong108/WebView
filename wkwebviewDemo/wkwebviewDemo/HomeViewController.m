@@ -58,7 +58,7 @@ static BOOL useEdgeInset = NO;        // 用那种方法添加自定义View， N
     configuration.allowsInlineMediaPlayback = YES;
     
     
-    _webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 45) configuration:configuration];
+    _webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 45 - 64) configuration:configuration];
     _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
     _webView.navigationDelegate = self;

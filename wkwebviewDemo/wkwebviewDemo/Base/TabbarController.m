@@ -24,19 +24,26 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    ViewController_three *three = [[ViewController_three alloc]init];
-    wkNavigationController *nav1 = [[wkNavigationController alloc]initWithRootViewController:three];
-    [self addChildViewController:nav1];
+    
     
     GameParseViewController *two = [[GameParseViewController alloc]init];
     two.view.backgroundColor = [UIColor blueColor];
     wkNavigationController *nav = [[wkNavigationController alloc]initWithRootViewController:two];
+    
+    two.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"最新" image:[[UIImage imageNamed:@"shuju"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] tag:0];
     [self addChildViewController:nav];
     
     HomeViewController *home = [[HomeViewController alloc]init];
     home.view.backgroundColor = [UIColor blueColor];
     wkNavigationController *homeNav = [[wkNavigationController alloc]initWithRootViewController:home];
+    home.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"数据" image:[[UIImage imageNamed:@"nav_cz"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] tag:1];
     [self addChildViewController:homeNav];
+    
+    
+    ViewController_three *user = [[ViewController_three alloc]init];
+    wkNavigationController *nav1 = [[wkNavigationController alloc]initWithRootViewController:user];
+    user.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"个人" image:[[UIImage imageNamed:@"nav_my"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] tag:0];
+    [self addChildViewController:nav1];
     
     
 }
