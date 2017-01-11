@@ -10,8 +10,11 @@
 #import "FMDatabaseQueue.h"
 #import "FMDatabase.h"
 #import "JLTableView.h"
+#import "GameObject.h"
+#import "DataBaseCell.h"
+#import "WebViewController.h"
 
-@interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,JLTableViewDelegate>
+@interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,JLTableViewDelegate,DataBaseCellDelegate>
 
 /**数据库操作队列*/
 @property (nonatomic, strong)FMDatabaseQueue *dbQueue;
@@ -43,21 +46,7 @@
 
 @implementation HomeViewController
 
-- (void)viewDidLoad{
-    [super viewDidLoad];
-    
-    [self initialize];
-    
-    [self getAllData];
-    
-    self.MVP_GameView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    self.MVP_GameView.delegate = self;
-    self.MVP_GameView.dataSource = self;
-    
-    self.MVP_GameView.rowHeight = 88;
-    self.MVP_GameView.hidden = YES;
-    [self.view addSubview:self.MVP_GameView];
-}
+
 - (void)getAllData{
     __weak typeof(self) weakSelf = self;
     [self requeryALLDatasBlcok:^(NSArray<NSDictionary *> *array) {
@@ -214,17 +203,29 @@
             FMResultSet *s = [db executeQuery:@"select * from Soccer"];
             NSMutableArray *arr = [NSMutableArray array];
             while ([s next]) {
-                NSMutableDictionary *dic_m = [NSMutableDictionary dictionaryWithCapacity:2];
-                NSString *soccer_ID = [s stringForColumn:@"soccer_ID"];
+                Betcompany *company = [[Betcompany alloc]init];
+//                @"CREATE TABLE IF NOT EXISTS \"Soccer\" (\"soccer_ID\" integer NOT NULL,\"league\" text NOT NULL,\"soccer\" text NOT NULL,\"gameurl\" text NOT NULL,\"otodds\" text NOT NULL,\"orignalpan\" text NOT NULL,\"ododds\" text NOT NULL,\"ntodds\" text NOT NULL,\"nowpan\" text NOT NULL,\"ndodds\" text NOT NULL)"
                 NSString *league = [s stringForColumn:@"league"];
                 NSString *gameurl = [s stringForColumn:@"gameurl"];
                 NSString *soccer = [s stringForColumn:@"soccer"];
+                NSString *soccer_ID = [s stringForColumn:@"soccer_ID"];
+                NSString *otodds = [s stringForColumn:@"otodds"];
+                NSString *orignalpan = [s stringForColumn:@"orignalpan"];
+                NSString *ododds = [s stringForColumn:@"ododds"];
+                NSString *ntodds = [s stringForColumn:@"ntodds"];
+                NSString *nowpan = [s stringForColumn:@"nowpan"];
+                NSString *ndodds = [s stringForColumn:@"ndodds"];
                 if (soccer_ID!=nil && ![soccer_ID isEqual:[NSNull null]] && league!=nil && ![league isEqual:[NSNull null]]) {
-                    [dic_m setObject:league forKey:@"league"];
-                    [dic_m setObject:soccer_ID forKey:@"soccer_ID"];
-                    [dic_m setObject:gameurl forKey:@"gameurl"];
-                    [dic_m setObject:soccer forKey:@"soccer"];
-                    [arr addObject:dic_m];
+                    company.league = league;
+                    company.soccer = soccer;
+                    company.gameurl = gameurl;
+                    company.oriTop = otodds;
+                    company.oriHandi = orignalpan;
+                    company.oridown = ododds;
+                    company.nowTop = ntodds;
+                    company.nowHandi = nowpan;
+                    company.nowdown = ndodds;
+                    [arr addObject:company];
                 }
                 
             }
@@ -238,6 +239,21 @@
     });
 }
 
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    
+    [self initialize];
+    
+    [self getAllData];
+    
+    self.MVP_GameView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.MVP_GameView.delegate = self;
+    self.MVP_GameView.dataSource = self;
+    [self.MVP_GameView registerNib:[UINib nibWithNibName:@"DataBaseCell" bundle:nil] forCellReuseIdentifier:@"database"];
+    self.MVP_GameView.rowHeight = 88;
+    self.MVP_GameView.hidden = YES;
+    [self.view addSubview:self.MVP_GameView];
+}
 #pragma mark - tableview -
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -245,17 +261,22 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArray.count;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"dataBase"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"dataBase"];
-    }
-    NSDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = dic[@"league"];
+- (DataBaseCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    DataBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"database"];
+    
+    cell.model = self.dataArray[indexPath.row];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 88;
+}
+- (void)cell:(DataBaseCell *)cell ClickDetailBtn:(NSString *)str{
+    WebViewController *web = [[WebViewController alloc]init];
+    web.url = [NSURL URLWithString:str];
+    [self.navigationController pushViewController:web animated:YES];
+}
+- (void)JLTableView:(JLTableView *)tableView SwitchFromIndex:(NSUInteger)fromeIndex ToIndex:(NSUInteger)toIndex{
+    NSLog(@"FROM -- INDEX %ld  TO  INDEX  %ld",fromeIndex,toIndex);
 }
 @end

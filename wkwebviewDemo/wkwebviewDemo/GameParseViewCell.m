@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *analysisBtn;
 @property (weak, nonatomic) IBOutlet UILabel *orignalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nowLabel;
+@property (weak, nonatomic) IBOutlet UIButton *historyBtn;
 
 @end
 
@@ -28,6 +29,7 @@
     
     // Initialization code
     [self.analysisBtn addTarget:self action:@selector(clickbtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.historyBtn addTarget:self action:@selector(historybtn:) forControlEvents:UIControlEventTouchUpInside];
     
     self.homeBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.visitBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -37,6 +39,12 @@
 - (void)clickbtn:(UIButton *)sender{
     if ([self.delegate respondsToSelector:@selector(cell:ClickBtn:)]) {
         [self.delegate cell:self ClickBtn:_model.plate.href];
+    }
+}
+- (void)historybtn:(UIButton *)sender{
+    
+    if ([self.delegate respondsToSelector:@selector(cell:ClickHistoryOrignal:NowHadi:)]) {
+        [self.delegate cell:self ClickHistoryOrignal:_model.ori_Plate NowHadi:_model.now_Plate];
     }
 }
 - (void)prepareForReuse{

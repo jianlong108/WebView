@@ -17,6 +17,8 @@
 		340196491DFD94D900CD5850 /* GameParseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 340196481DFD94D900CD5850 /* GameParseViewCell.m */; };
 		3401964D1DFD95A000CD5850 /* GameParseViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3401964C1DFD95A000CD5850 /* GameParseViewCell.xib */; };
 		340196501DFDA0CA00CD5850 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401964F1DFDA0CA00CD5850 /* WebViewController.m */; };
+		346221FB1E25E17700399E6C /* DataBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 346221FA1E25E17700399E6C /* DataBaseCell.m */; };
+		346221FD1E25E24500399E6C /* DataBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 346221FC1E25E24500399E6C /* DataBaseCell.xib */; };
 		346331CB1DE59A1700B951F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 346331CA1DE59A1700B951F8 /* main.m */; };
 		346331CE1DE59A1700B951F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 346331CD1DE59A1700B951F8 /* AppDelegate.m */; };
 		346331D41DE59A1700B951F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 346331D21DE59A1700B951F8 /* Main.storyboard */; };
@@ -58,6 +60,9 @@
 		3401964C1DFD95A000CD5850 /* GameParseViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameParseViewCell.xib; sourceTree = "<group>"; };
 		3401964E1DFDA0CA00CD5850 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		3401964F1DFDA0CA00CD5850 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		346221F91E25E17700399E6C /* DataBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseCell.h; sourceTree = "<group>"; };
+		346221FA1E25E17700399E6C /* DataBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseCell.m; sourceTree = "<group>"; };
+		346221FC1E25E24500399E6C /* DataBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataBaseCell.xib; sourceTree = "<group>"; };
 		346331C61DE59A1700B951F8 /* wkwebviewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wkwebviewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		346331CA1DE59A1700B951F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		346331CC1DE59A1700B951F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -162,6 +167,9 @@
 				346331CD1DE59A1700B951F8 /* AppDelegate.m */,
 				346331E31DE59AF400B951F8 /* HomeViewController.h */,
 				346331E41DE59AF400B951F8 /* HomeViewController.m */,
+				346221F91E25E17700399E6C /* DataBaseCell.h */,
+				346221FA1E25E17700399E6C /* DataBaseCell.m */,
+				346221FC1E25E24500399E6C /* DataBaseCell.xib */,
 				346331F11DE6867300B951F8 /* JSOCHandler.h */,
 				346331F21DE6867300B951F8 /* JSOCHandler.m */,
 				346331E61DE59B0300B951F8 /* GameParseViewController.h */,
@@ -285,6 +293,7 @@
 				346331D61DE59A1700B951F8 /* Assets.xcassets in Resources */,
 				34D204A91E251C590044F2DC /* Soccer.db in Resources */,
 				3401964D1DFD95A000CD5850 /* GameParseViewCell.xib in Resources */,
+				346221FD1E25E24500399E6C /* DataBaseCell.xib in Resources */,
 				346331F01DE6829600B951F8 /* Study.html in Resources */,
 				346331D41DE59A1700B951F8 /* Main.storyboard in Resources */,
 			);
@@ -311,6 +320,7 @@
 				346331CE1DE59A1700B951F8 /* AppDelegate.m in Sources */,
 				340196461DFD418000CD5850 /* GameObject.m in Sources */,
 				3401963F1DFD1C7C00CD5850 /* TabbarController.m in Sources */,
+				346221FB1E25E17700399E6C /* DataBaseCell.m in Sources */,
 				340196391DFD1C3C00CD5850 /* XPathQuery.m in Sources */,
 				340196381DFD1C3C00CD5850 /* TFHppleElement.m in Sources */,
 				340196371DFD1C3C00CD5850 /* TFHpple.m in Sources */,

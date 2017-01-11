@@ -15,7 +15,7 @@
 
 @optional
 - (void)cell:(GameParseViewCell *)cell ClickBtn:(NSString *)str;
-
+- (void)cell:(GameParseViewCell *)cell ClickHistoryOrignal:(NSString *)oriHadi NowHadi:(NSString *)nowHadi;
 @end
 
 @interface GameParseViewCell : UITableViewCell

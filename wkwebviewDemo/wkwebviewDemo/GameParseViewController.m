@@ -75,7 +75,7 @@
 }
 - (void)getTodayData{
     
-    self.MVP_GameView = [[JLTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.MVP_GameView = [[JLTableView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height - 64 - 45) style:UITableViewStylePlain];
     self.MVP_GameView.delegate = self;
     self.MVP_GameView.dataSource = self;
     [self.MVP_GameView registerNib:[UINib nibWithNibName:@"GameParseViewCell" bundle:nil] forCellReuseIdentifier:@"mvp"];
@@ -378,16 +378,20 @@
     cell.model = game;
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 88;
+}
+- (void)JLTableView:(JLTableView *)tableView SwitchFromIndex:(NSUInteger)fromeIndex ToIndex:(NSUInteger)toIndex{
+    NSLog(@"FROM -- INDEX %ld  TO  INDEX  %ld",fromeIndex,toIndex);
+}
 - (void)cell:(GameParseViewCell *)cell ClickBtn:(NSString *)str{
     WebViewController *web = [[WebViewController alloc]init];
     web.url = [NSURL URLWithString:str];
     
     [self.navigationController pushViewController:web animated:YES];
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 88;
-}
-- (void)JLTableView:(JLTableView *)tableView SwitchFromIndex:(NSUInteger)fromeIndex ToIndex:(NSUInteger)toIndex{
-    NSLog(@"FROM -- INDEX %ld  TO  INDEX  %ld",fromeIndex,toIndex);
+- (void)cell:(GameParseViewCell *)cell ClickHistoryOrignal:(NSString *)oriHadi NowHadi:(NSString *)nowHadi{
+    
 }
 @end

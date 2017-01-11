@@ -9,6 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @interface Betcompany : NSObject
+
+/**联赛*/
+@property (nonatomic, copy)NSString *league;
+
+/**比分*/
+@property (nonatomic, copy)NSString *soccer;
+
+/**比分*/
+@property (nonatomic, copy)NSString *gameurl;
+
 /**name*/
 @property (nonatomic, copy)NSString *name;
 
