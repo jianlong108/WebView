@@ -7,11 +7,11 @@
 //
 
 #import "UserViewController.h"
-#import "JLBothSidesView.h"
+#import "JLBothSidesBtn.h"
 
 @interface UserViewController ()
 /**双面button*/
-@property (nonatomic, strong)JLBothSidesView *bothSidesView;
+@property (nonatomic, strong)JLBothSidesBtn *bothSidesView;
 @end
 
 @implementation UserViewController
@@ -20,8 +20,9 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _bothSidesView  =[[JLBothSidesView alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
+    _bothSidesView  =[[JLBothSidesBtn alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
     [self.view addSubview:_bothSidesView];
+    _bothSidesView.autoTransition = NO;
     
     // Do any additional setup after loading the view.
     

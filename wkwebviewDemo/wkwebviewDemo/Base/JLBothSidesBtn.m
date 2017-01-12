@@ -6,9 +6,9 @@
 //  Copyright © 2017年 JL. All rights reserved.
 //
 
-#import "JLBothSidesView.h"
+#import "JLBothSidesBtn.h"
 
-@interface JLBothSidesView ()
+@interface JLBothSidesBtn ()
 
 /**正面button*/
 @property (nonatomic, strong,readwrite)UIButton *positiveBtn;
@@ -18,15 +18,16 @@
 
 @end
 
-@implementation JLBothSidesView
+@implementation JLBothSidesBtn
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         
         self.backgroundColor = [UIColor clearColor];
         
-        _animationOptions = UIViewAnimationOptionTransitionFlipFromRight;
+        _animationOptions = UIViewAnimationOptionTransitionFlipFromLeft;
         _animationDuration = 0.5f;
+        _autoTransition = YES;
         
         // Do any additional setup after loading the view.
         _positiveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -47,6 +48,9 @@
     
 }
 - (void)btnClick:(UIButton *)sender{
+    if (_autoTransition == NO)
+        return;
+
     [UIView transitionFromView:sender toView:(sender == _positiveBtn)?_oppositeBtn : _positiveBtn duration:_animationDuration options:_animationOptions completion:^(BOOL finished) {
         NSLog(@"%@--->%@",_oppositeBtn.superview,_positiveBtn.superview);
     }];

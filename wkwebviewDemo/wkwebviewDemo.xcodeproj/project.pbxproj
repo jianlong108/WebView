@@ -31,7 +31,7 @@
 		346331F01DE6829600B951F8 /* Study.html in Resources */ = {isa = PBXBuildFile; fileRef = 346331EF1DE6829600B951F8 /* Study.html */; };
 		346331F31DE6867300B951F8 /* JSOCHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 346331F21DE6867300B951F8 /* JSOCHandler.m */; };
 		348D53EA1E2756470005E96A /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 348D53E91E2756470005E96A /* UserViewController.m */; };
-		348D53F01E275E720005E96A /* JLBothSidesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 348D53EF1E275E720005E96A /* JLBothSidesView.m */; };
+		348D53F01E275E720005E96A /* JLBothSidesBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 348D53EF1E275E720005E96A /* JLBothSidesBtn.m */; };
 		349A625D1E11219B0060D69E /* JLTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A625C1E11219B0060D69E /* JLTableView.m */; };
 		34D204A01E25144C0044F2DC /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D204971E25144C0044F2DC /* FMDatabase.m */; };
 		34D204A11E25144C0044F2DC /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D204991E25144C0044F2DC /* FMDatabaseAdditions.m */; };
@@ -85,8 +85,8 @@
 		346331F21DE6867300B951F8 /* JSOCHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSOCHandler.m; sourceTree = "<group>"; };
 		348D53E81E2756470005E96A /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		348D53E91E2756470005E96A /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
-		348D53EE1E275E720005E96A /* JLBothSidesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLBothSidesView.h; sourceTree = "<group>"; };
-		348D53EF1E275E720005E96A /* JLBothSidesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLBothSidesView.m; sourceTree = "<group>"; };
+		348D53EE1E275E720005E96A /* JLBothSidesBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLBothSidesBtn.h; sourceTree = "<group>"; };
+		348D53EF1E275E720005E96A /* JLBothSidesBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLBothSidesBtn.m; sourceTree = "<group>"; };
 		349A625B1E11219B0060D69E /* JLTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLTableView.h; sourceTree = "<group>"; };
 		349A625C1E11219B0060D69E /* JLTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLTableView.m; sourceTree = "<group>"; };
 		34D204961E25144C0044F2DC /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -141,8 +141,8 @@
 				3401963E1DFD1C7C00CD5850 /* wkNavigationController.m */,
 				349A625B1E11219B0060D69E /* JLTableView.h */,
 				349A625C1E11219B0060D69E /* JLTableView.m */,
-				348D53EE1E275E720005E96A /* JLBothSidesView.h */,
-				348D53EF1E275E720005E96A /* JLBothSidesView.m */,
+				348D53EE1E275E720005E96A /* JLBothSidesBtn.h */,
+				348D53EF1E275E720005E96A /* JLBothSidesBtn.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -335,7 +335,7 @@
 				340196381DFD1C3C00CD5850 /* TFHppleElement.m in Sources */,
 				346222001E260E0200399E6C /* DBManager.m in Sources */,
 				340196371DFD1C3C00CD5850 /* TFHpple.m in Sources */,
-				348D53F01E275E720005E96A /* JLBothSidesView.m in Sources */,
+				348D53F01E275E720005E96A /* JLBothSidesBtn.m in Sources */,
 				34F4DC501E0CD0E7000158BC /* statusBarViewController.m in Sources */,
 				346331CB1DE59A1700B951F8 /* main.m in Sources */,
 				348D53EA1E2756470005E96A /* UserViewController.m in Sources */,
