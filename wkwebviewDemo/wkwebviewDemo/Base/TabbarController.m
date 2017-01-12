@@ -8,7 +8,7 @@
 
 #import "TabbarController.h"
 #import "GameParseViewController.h"
-#import "ViewController_three.h"
+#import "UserViewController.h"
 
 #import "wkNavigationController.h"
 #import "HomeViewController.h"
@@ -40,7 +40,7 @@
     [self addChildViewController:homeNav];
     
     
-    ViewController_three *user = [[ViewController_three alloc]init];
+    UserViewController *user = [[UserViewController alloc]init];
     wkNavigationController *nav1 = [[wkNavigationController alloc]initWithRootViewController:user];
     user.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"个人" image:[[UIImage imageNamed:@"nav_my"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] tag:0];
     [self addChildViewController:nav1];

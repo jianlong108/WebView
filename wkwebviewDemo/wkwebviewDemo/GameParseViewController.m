@@ -14,6 +14,7 @@
 #import "WebViewController.h"
 #import "GameObject.h"
 #import "JLTableView.h"
+#import "DBManager.h"
 
 #import <JavaScriptCore/JavaScriptCore.h>
 
@@ -392,6 +393,11 @@
     [self.navigationController pushViewController:web animated:YES];
 }
 - (void)cell:(GameParseViewCell *)cell ClickHistoryOrignal:(NSString *)oriHadi NowHadi:(NSString *)nowHadi{
-    
+    __weak typeof(self)weakSelf = self;
+    [[DBManager defaultObject]requeryDatasBlcok:^(NSArray<Betcompany *> *array) {
+        HomeViewController *home = [[HomeViewController alloc]init];
+        home.dataArray = array;
+        [weakSelf.navigationController pushViewController:home animated:YES];
+    } WithOriPlate:oriHadi NowPlate:nowHadi];
 }
 @end

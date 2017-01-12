@@ -10,4 +10,8 @@
 
 @interface HomeViewController : UIViewController
 
+/**数据*/
+@property (nonatomic, strong) NSArray*dataArray;
+
+
 @end
