@@ -111,6 +111,7 @@
                 
                 // Undo the black-out effect we did.
                 cell.backgroundColor = [UIColor whiteColor];
+                cell.alpha = 1.0;
                 
             } completion:^(BOOL finished) {
                 

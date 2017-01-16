@@ -21,6 +21,8 @@
     // Override point for customization after application launch.
     TabbarController *tabbar = [[TabbarController alloc]init];
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor orangeColor];
+//    self.window.windowLevel = UIWindowLevelStatusBar + 1;
     self.window.rootViewController = tabbar;
     [self.window makeKeyAndVisible];
     return YES;

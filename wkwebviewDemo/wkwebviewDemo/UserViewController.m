@@ -9,7 +9,7 @@
 #import "UserViewController.h"
 #import "JLBothSidesBtn.h"
 
-@interface UserViewController ()
+@interface UserViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /**双面button*/
 @property (nonatomic, strong)JLBothSidesBtn *bothSidesView;
 @end
@@ -35,10 +35,30 @@
 }
 -(void)dbtn1{
     NSLog(@"positiveBtn");
+    UIImagePickerController *piceker = [[UIImagePickerController alloc]init];
+    piceker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    piceker.allowsEditing = YES;
+    piceker.navigationBarHidden = NO;
+    piceker.toolbarHidden = YES;
+//    piceker.view.window.windowLevel = UIWindowLevelStatusBar +1;
+    piceker.delegate = self;
+//    piceker.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    piceker.modalPresentationStyle= UIModalPresentationFullScreen;
+        piceker.modalPresentationCapturesStatusBarAppearance = YES;
+//    piceker.extendedLayoutIncludesOpaqueBars = YES;
+    piceker.automaticallyAdjustsScrollViewInsets= NO;
+        piceker.edgesForExtendedLayout = UIRectEdgeNone;
+//    piceker.definesPresentationContext = YES;
+    //    piceker.extendedLayoutIncludesOpaqueBars = NO;
+    //    piceker.modalPresentationCapturesStatusBarAppearance = NO;
+    [self presentViewController:piceker animated:YES completion:^{}];
     
 }
 -(void)dbtn2{
     NSLog(@"oppositeBtn");
+    UIViewController *vc =[[UIViewController alloc]init];
+    vc.view.backgroundColor = [UIColor blueColor];
+    [self presentViewController:vc animated:YES completion:^{}];
 }
 -(void)dbtn3{
     
