@@ -24,5 +24,6 @@
 + (void)removeObjectFromCacheAndDisk;
 
 - (void)requeryALLDatasBlcok:(void(^)(NSArray<Betcompany *> *array))block;
+
 - (void)requeryDatasBlcok:(void(^)(NSArray<Betcompany *> *array))block WithOriPlate:(NSString *)oriPlate NowPlate:(NSString *)nowPlate;
 @end
