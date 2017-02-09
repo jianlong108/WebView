@@ -33,6 +33,7 @@
 		34B940AE1E4C36EC001805F3 /* GameParseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B940A81E4C36EC001805F3 /* GameParseViewCell.m */; };
 		34B940AF1E4C36EC001805F3 /* GameParseViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34B940A91E4C36EC001805F3 /* GameParseViewCell.xib */; };
 		34B940B01E4C36EC001805F3 /* GameParseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B940AB1E4C36EC001805F3 /* GameParseViewController.m */; };
+		34B940B31E4C3987001805F3 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B940B21E4C3987001805F3 /* DBManager.m */; };
 		34D204A01E25144C0044F2DC /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D204971E25144C0044F2DC /* FMDatabase.m */; };
 		34D204A11E25144C0044F2DC /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D204991E25144C0044F2DC /* FMDatabaseAdditions.m */; };
 		34D204A21E25144C0044F2DC /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D2049B1E25144C0044F2DC /* FMDatabasePool.m */; };
@@ -87,6 +88,8 @@
 		34B940A91E4C36EC001805F3 /* GameParseViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameParseViewCell.xib; sourceTree = "<group>"; };
 		34B940AA1E4C36EC001805F3 /* GameParseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameParseViewController.h; sourceTree = "<group>"; };
 		34B940AB1E4C36EC001805F3 /* GameParseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameParseViewController.m; sourceTree = "<group>"; };
+		34B940B11E4C3987001805F3 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		34B940B21E4C3987001805F3 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		34D204961E25144C0044F2DC /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		34D204971E25144C0044F2DC /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		34D204981E25144C0044F2DC /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -211,6 +214,8 @@
 		34B9409C1E4C3660001805F3 /* Soccer */ = {
 			isa = PBXGroup;
 			children = (
+				34B940B11E4C3987001805F3 /* DBManager.h */,
+				34B940B21E4C3987001805F3 /* DBManager.m */,
 				34B9409F1E4C36DA001805F3 /* Soccer.db */,
 				34B9409D1E4C3660001805F3 /* Model */,
 				34B9409E1E4C3660001805F3 /* ViewController */,
@@ -350,6 +355,7 @@
 				346331CE1DE59A1700B951F8 /* AppDelegate.m in Sources */,
 				3401963F1DFD1C7C00CD5850 /* TabbarController.m in Sources */,
 				340196391DFD1C3C00CD5850 /* XPathQuery.m in Sources */,
+				34B940B31E4C3987001805F3 /* DBManager.m in Sources */,
 				340196381DFD1C3C00CD5850 /* TFHppleElement.m in Sources */,
 				340196371DFD1C3C00CD5850 /* TFHpple.m in Sources */,
 				34B940AE1E4C36EC001805F3 /* GameParseViewCell.m in Sources */,
