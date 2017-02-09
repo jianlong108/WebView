@@ -24,6 +24,11 @@
     [self.view addSubview:_bothSidesView];
     _bothSidesView.autoTransition = NO;
     
+    UITextField *filed = [[UITextField alloc]initWithFrame:CGRectMake(100, 220, 100, 100)];
+    filed.backgroundColor = [UIColor lightGrayColor];
+    filed.placeholder = @"请输入...";
+    [self.view addSubview:filed];
+    
     // Do any additional setup after loading the view.
     
     [_bothSidesView.positiveBtn addTarget:self action:@selector(dbtn1) forControlEvents:UIControlEventTouchUpInside];
@@ -33,6 +38,7 @@
     [_bothSidesView.oppositeBtn addTarget:self action:@selector(dbtn2) forControlEvents:UIControlEventTouchUpInside];
     
 }
+
 -(void)dbtn1{
     NSLog(@"positiveBtn");
     UIImagePickerController *piceker = [[UIImagePickerController alloc]init];
@@ -58,7 +64,9 @@
     NSLog(@"oppositeBtn");
     UIViewController *vc =[[UIViewController alloc]init];
     vc.view.backgroundColor = [UIColor blueColor];
-    [self presentViewController:vc animated:YES completion:^{}];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
 }
 -(void)dbtn3{
     

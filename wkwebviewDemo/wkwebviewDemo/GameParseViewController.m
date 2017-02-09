@@ -245,6 +245,7 @@
                                      break;
                                  case 2:
                                      company.oriHandi = tempStr;
+                                     company.oriHandi_num = [self switchHandicapToFloat:tempStr];
                                      break;
                                  case 3:
                                      company.oridown = tempStr;
@@ -254,6 +255,7 @@
                                      break;
                                  case 5:
                                      company.nowHandi = tempStr;
+                                     company.nowHandi_num = [self switchHandicapToFloat:tempStr];
                                      break;
                                  case 6:
                                      company.nowdown = tempStr;
@@ -288,6 +290,7 @@
                                      break;
                                  case 2:
                                      company.oriHandi = tempStr;
+                                     company.oriHandi_num = [self switchHandicapToFloat:tempStr];
                                      break;
                                  case 3:
                                      company.oridown = tempStr;
@@ -297,6 +300,7 @@
                                      break;
                                  case 5:
                                      company.nowHandi = tempStr;
+                                     company.nowHandi_num = [self switchHandicapToFloat:tempStr];
                                      break;
                                  case 6:
                                      company.nowdown = tempStr;
@@ -312,8 +316,9 @@
                      [object.betCompanies addObject:company];
                  }
                  
+                 
+                 int num = 0;
                  for (Betcompany *company in object.betCompanies) {
-//                     NSLog(@"%@ %@",company.nowHandi,company.oriHandi);
                      if ([company.name isEqualToString:@"澳彩"]) {
                          object.ori_Top = company.oriTop;
                          object.ori_Plate = company.oriHandi;
@@ -321,15 +326,29 @@
                          object.now_Top = company.nowTop;
                          object.now_Plate = company.nowHandi;
                          object.now_Bottom = company.nowdown;
-                         if(![company.nowHandi isEqualToString:company.oriHandi])
+                         
+                         if(company.oriHandi_num >= 0 && company.nowHandi_num < 0){
                              object.canBet = YES;
-                         else if(company.nowTop.floatValue > 1.0 && [company.nowHandi isEqualToString:@"半球"]){
-                             object.canBet = YES;
-                         }else{
-                             object.canBet = NO;
+                         }else if (company.oriHandi_num >= 0 && company.nowHandi_num >= 0){
+                             if (company.oriHandi_num -company.nowHandi_num > 0) {
+                                 object.canBet = YES;
+                             }
+                         }else if (company.oriHandi_num < 0 && company.nowHandi_num < 0){
+                             if (company.oriHandi_num -company.nowHandi_num < 0) {
+                                 object.canBet = YES;
+                             }
                          }
                      }
+                     
+                     if(company.nowTop.floatValue > 1.0 && [company.nowHandi isEqualToString:@"半球"]){
+                        num++;
+                     }
+                     
                  }
+                 if (num > 5) {
+                     object.canBet = YES;
+                 }
+                 
                  if ([object isEqual:[self.gameModeles lastObject]]) {
                      dispatch_async(dispatch_get_main_queue(), ^{
                          sender.hidden = NO;
@@ -357,6 +376,74 @@
     return _gameModeles;
 }
 
+- (float)switchHandicapToFloat:(NSString *)Handicap{
+    
+    if ([Handicap isEqualToString:@"受平手/半球"])
+        return -0.25;
+    else if ([Handicap isEqualToString:@"受半球"])
+        return -0.5;
+    else if ([Handicap isEqualToString:@"受半球/一球"])
+        return -0.75;
+    else if ([Handicap isEqualToString:@"受一球"])
+        return -1.0;
+    else if ([Handicap isEqualToString:@"受一球/一球半"])
+        return -1.25;
+    else if ([Handicap isEqualToString:@"受一球半"])
+        return -1.5;
+    else if ([Handicap isEqualToString:@"受一球半/两球"])
+        return -1.75;
+    else if ([Handicap isEqualToString:@"受两球"])
+        return -2.0;
+    else if ([Handicap isEqualToString:@"受两球/两球半"])
+        return -2.25;
+    else if ([Handicap isEqualToString:@"受两球半"])
+        return -2.5;
+    else if ([Handicap isEqualToString:@"受两球半/三球"])
+        return -2.75;
+    else if ([Handicap isEqualToString:@"受三球"])
+        return -3.0;
+    else if ([Handicap isEqualToString:@"受三球/三球半"])
+        return -3.25;
+    else if ([Handicap isEqualToString:@"受三球半"])
+        return -3.5;
+    else if ([Handicap isEqualToString:@"受三球半/四球"])
+        return -3.75;
+    else if ([Handicap isEqualToString:@"平手"])
+        return 0;
+    else if ([Handicap isEqualToString:@"平手/半球"])
+        return 0.25;
+    else if ([Handicap isEqualToString:@"半球"])
+        return 0.5;
+    else if ([Handicap isEqualToString:@"半球/一球"])
+        return 0.75;
+    else if ([Handicap isEqualToString:@"一球"])
+        return 1.0;
+    else if ([Handicap isEqualToString:@"一球/球半"])
+        return 1.25;
+    else if ([Handicap isEqualToString:@"球半"])
+        return 1.5;
+    else if ([Handicap isEqualToString:@"球半/两球"])
+        return 1.75;
+    else if ([Handicap isEqualToString:@"两球"])
+        return 2.0;
+    else if ([Handicap isEqualToString:@"两球/两球半"])
+        return 2.25;
+    else if ([Handicap isEqualToString:@"两球半"])
+        return 2.5;
+    else if ([Handicap isEqualToString:@"两球半/三球"])
+        return 2.75;
+    else if ([Handicap isEqualToString:@"三球"])
+        return 3.0;
+    else if ([Handicap isEqualToString:@"三球/三球半"])
+        return 3.25;
+    else if ([Handicap isEqualToString:@"三球半"])
+        return 3.5;
+    else if ([Handicap isEqualToString:@"三球半/四球"])
+        return 3.75;
+    else
+        return 108;
+            
+}
 
 
 

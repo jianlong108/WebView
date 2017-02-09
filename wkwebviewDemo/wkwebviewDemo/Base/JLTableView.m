@@ -28,6 +28,7 @@
     return self;
 }
 
+#pragma mark - long gesture -> drag -
 - (void)addGesture{
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
                                                initWithTarget:self action:@selector(longPressGestureRecognized:)];
@@ -36,7 +37,6 @@
 //    tableView.sectionIndexBackgroundColor = [UIColor clearColor];
     [self addGestureRecognizer:longPress];
 }
-#pragma mark gesture
 
 //长按手势方法
 - (void)longPressGestureRecognized:(id)sender {

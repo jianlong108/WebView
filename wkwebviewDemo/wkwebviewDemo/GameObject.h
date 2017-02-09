@@ -29,6 +29,13 @@
 @property (nonatomic, copy)NSString *nowHandi;
 @property (nonatomic, copy)NSString *nowdown;
 
+/**初盘*/
+@property (nonatomic, assign)float oriHandi_num;
+/**即盘*/
+@property (nonatomic, assign)float nowHandi_num;
+
+
+
 @end
 
 @interface GameSubObject : NSObject
@@ -47,6 +54,7 @@
 
 /**主队*/
 @property (nonatomic, strong)GameSubObject *hometeam;
+
 /**客队*/
 @property (nonatomic, strong)GameSubObject *visitingteam;
 
